@@ -58,6 +58,6 @@ resource "random_integer" "suffix" {
   min = 10000
   max = 99999
   keepers = {
-    resource_group = azurerm_resource_group.example.name
+    resource_group = var.resource_group_name
   }
 }
