@@ -2,5 +2,5 @@ name: Terraform-Sandbox
 version: 1.0.0
 summary: Empty sandbox environment
 description: Deploys an empty sandbox environment
-runner: "devcenteracr.azurecr.io/ade:latest"
+runner: devcenteracr.azurecr.io/ade:latest
 templatePath: main.tf
