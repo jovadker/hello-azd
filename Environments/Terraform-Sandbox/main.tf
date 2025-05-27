@@ -11,15 +11,45 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "ade-terraform-resource-group"
-  location = "East US"
+variable "resource_group_name" {
+  description = "Resource group name"
+  type        = string
 }
+
+variable "ade_env_name" {
+  description = "ADE environment name"
+  type        = string
+}
+
+variable "env_name" {
+  description = "Environment name"
+  type        = string
+}
+
+variable "ade_subscription" {
+  description = "ADE subscription ID"
+  type        = string
+}
+
+variable "ade_location" {
+  description = "ADE environment location"
+  type        = string
+}
+
+variable "ade_environment_type" {
+  description = "ADE environment type"
+  type        = string
+}
+
+/*resource "azurerm_resource_group" "example" {
+  name     = var.resource_group_name
+  location = var.ade_location
+}*/
 
 resource "azurerm_storage_account" "example" {
   name                     = "adeterraformsa${random_integer.suffix.result}"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
+  resource_group_name      = var.resource_group_name
+  location                 = var.ade_location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
